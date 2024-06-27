@@ -58,28 +58,30 @@ export const placeorder = () => {
 
     loadContents();
   }, []);
-  const loadRazorpayScript = () => {
+  function loadScript(src) {
     return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = () => {
+            resolve(true);
+        };
+        script.onerror = () => {
+            resolve(false);
+        };
+        document.body.appendChild(script);
     });
-  };
+}
 
   const payWithRazorpay = async () => {
     try {
-      const scriptLoaded = await loadRazorpayScript();
+      const res = await loadScript(
+        import.meta.env.VITE_APP_CLIENT_URL
+    );
 
-      if (!scriptLoaded) {
-        toast.error("Razorpay SDK failed to load. Are you online?");
+    if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
         return;
-      }
+    }
       const options = {
         key: "rzp_test_njkhQ67c5Bgwlt", // Enter the Key ID generated from the Dashboard
         amount: String(totalPrice),
