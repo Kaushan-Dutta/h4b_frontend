@@ -21,7 +21,7 @@ const Hockers = () => {
         <h1>{hocker?._id}</h1>
 
         <h1>{hocker?.hockerName}</h1>
-        <QRCode value={`https://localhost:5173/placeorder?pantryId=${pantryId}&hockerId=${hocker?._id}`} renderAs="canvas" />
+        <QRCode value={`${import.meta.env.VITE_APP_CLIENT_URL}placeorder?hockerId=${hocker?._id}`} renderAs="canvas" />
 
       </div>
     ))
