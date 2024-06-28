@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { RouteLinks } from '../../../routes.config';
 import { useAuth } from '../../context/AuthContext';
 import { useLocation } from 'react-router-dom';
+import Logo from '../Logo';
 
 const SideBar = () => {
   const { auth } = useAuth();
@@ -10,10 +11,10 @@ const SideBar = () => {
 
   console.log("Auth",auth);
   return (
-    <div className='w-52  border-2 flex flex-col gap-5 h-screen py-5 '>
-      <div className='h-2/3'>
-      <div>
-      <button className='py-3 px-5'>LOGO</button>
+    <div className='w-52  border-2 flex flex-col  h-screen py-5 '>
+      <div className='h-2/3 flex-col flex gap-7'>
+      <div className='px-5'>
+      <Logo/>
       </div>
       <ul className='flex flex-col  w-full'>
         {RouteLinks.map((route, index) => (
