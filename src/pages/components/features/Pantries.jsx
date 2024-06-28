@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 import GoBack from "../GoBack";
 import { RxCross1 } from "react-icons/rx";
 import { useAuth } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Pantries = () => {
   const { pantryDetails, addPantry, pantries } = pantry();
   const { auth } = useAuth();
   const [state, setState] = useState(0);
-
+  const navigate = useNavigate();
   const AddPantry = () => {
     return (
-      <div className="w-screen h-screen px-5 md:px-0  bg-primary bg-opacity-10 fixed z-30 justify-center items-center flex flex-row top-0 left-0 ">
+      <div className="w-screen h-screen px-5 md:px-0  bg-primary bg-opacity-10 fixed  justify-center items-center flex flex-row top-0 left-0 ">
         <div className="p-5 w-96 rounded-lg  bg-white flex flex-col gap-5">
           <div className="flex_row justify-end rounded-lg">
             <button
@@ -59,7 +60,9 @@ const Pantries = () => {
         </div>
 
         {pantries?.map((pantry, index) => (
-          <div className="flex flex-col gap-5 bg-white rounded-lg p-3">
+          <div className="flex flex-col gap-5 bg-white rounded-lg p-3 cursor-pointer" onClick={()=>{
+            navigate(`${pantry?._id}`)
+          }} >
             <div className="flex_row justify-between gap-5 ">
               <div className="">
                 <h1 className="text-xl font-bold">
@@ -78,6 +81,4 @@ const Pantries = () => {
 };
 
 export default Pantries;
-{
-  /* <Link to={pantry?._id}>Click Here</Link> */
-}
+
