@@ -2,6 +2,7 @@ import React from "react";
 import Background from "../assets/Background.jpg";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Home = () => {
   const { auth } = useAuth();
@@ -10,7 +11,7 @@ const Home = () => {
     <div className="md:px-[5rem] py-5 px-[2rem]">
       <nav className="flex_row justify-between">
         <div>
-          <h1>Logo</h1>
+          <Logo />
         </div>
         <div className="flex_row justify-center gap-5">
           {!auth && (
