@@ -1,23 +1,11 @@
-import { useState } from 'react'
-import '../styles/Dashboard.css'
-import Header from './Header'
-import Sidebar from './Sidebar'
-import Home from './Dashcontent'
+import React from 'react'
+import QRCode from 'qrcode.react';
 
-function Dashboard() {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
-
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle)
-  }
-
+const Dashboard = () => {
   return (
-    <div className='grid-container'>
-      <Header OpenSidebar={OpenSidebar}/>
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-      <Home />
-    </div>
+    <QRCode value="https://localhost:5173/admin/39043084" renderAs="canvas" />
   )
 }
 
 export default Dashboard
+//https://localhost:5173/makeorder?pantryId=19289&hockerId=84048

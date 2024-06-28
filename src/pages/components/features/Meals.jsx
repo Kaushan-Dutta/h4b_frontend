@@ -60,7 +60,7 @@ const Meals = () => {
                 <h1 className="text-xl font-bold">
                   {meal.mealName} ( Cat: {meal.mealType} )
                 </h1>
-                <p>ML28472</p>
+                <p>{meal?._id}</p>
               </div>
               <div className="flex_row gap-5">
                 <button className="rounded-full px-3 py-1 text-white bg-primary text-sm">
