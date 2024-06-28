@@ -1,31 +1,90 @@
-import React from 'react'
-import {pantrymeals} from '../../../lib/api/admin/meals'
-import { useAuth } from '../../../context/AuthContext';
+import React, { useState } from "react";
+import { pantrymeals } from "../../../lib/api/admin/meals";
+import { useAuth } from "../../../context/AuthContext";
+import GoBack from "../GoBack";
+import { RxCross1 } from "react-icons/rx";
 
 const Meals = () => {
-  const {mealDetails, addMeal, meals}=pantrymeals();
-  const {auth} = useAuth();
-  return (
-    <>
-    {auth?.role==='admin' && <form onSubmit={addMeal}>
-      {
-        mealDetails.map((ele,index)=>(
-          <input {...ele} key={index} />
-        ))
-      }
-      <button type="submit">Add Meal</button>
-    </form>}
-    {meals?.map((meal,index)=>(
-      <div key={index}>
-        <h1>{meal.mealName}</h1>
-        <h2>{meal.mealType}</h2>
-        <h3>{meal.mealPrice}</h3>
+  const { mealDetails, addMeal, meals } = pantrymeals();
+  const { auth } = useAuth();
+  const [state, setState] = useState(0);
+
+  const AddMeal = () => {
+    return (
+      <div className="w-screen h-screen px-5 md:px-0  bg-primary bg-opacity-10 fixed z-30 justify-center items-center flex flex-row top-0 left-0 ">
+        <div className="p-5 w-96 rounded-lg  bg-white flex flex-col gap-5">
+          <div className="flex_row justify-end rounded-lg">
+            <button
+              onClick={() => {
+                setState(0);
+              }}
+              className="text-xl"
+            >
+              <RxCross1 />
+            </button>
+          </div>
+          <form onSubmit={addMeal} className="flex flex-col gap-5 ">
+            {mealDetails.map((ele, index) => (
+              <input {...ele} key={index} className="w-full" />
+            ))}
+            <button
+              type="submit"
+              className="text-white bg-primary text-sm rounded-lg p-3"
+            >
+              Add Meal
+            </button>
+          </form>
+        </div>
       </div>
-    ))
+    );
+  };
+  return (
+    <div className="p-5  w-2/3">
+      <GoBack />
+      <div className="flex flex-col gap-5 my-8 ">
+        <div className="flex_row justify-between">
+          <h1 className="text-4xl font-bold">Meals</h1>
+          {auth && auth?.role==='admin' &&<button
+            className="rounded-full px-3 py-1 text-white bg-imp text-sm"
+            onClick={() => {
+              setState(1);
+            }}
+          >
+            Add Meal
+          </button>}
+        </div>
+        {meals?.map((meal, index) => (
+          <div className="flex flex-col gap-5 bg-white rounded-lg p-3">
+            <div className="flex_row justify-between gap-5 ">
+              <div className="">
+                <h1 className="text-xl font-bold">
+                  {meal.mealName} ( Cat: {meal.mealType} )
+                </h1>
+                <p>ML28472</p>
+              </div>
+              <div className="flex_row gap-5">
+                <button className="rounded-full px-3 py-1 text-white bg-primary text-sm">
+                  Rs&nbsp;{meal.mealPrice}
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {state == 1 && <AddMeal />}
+    </div>
+  );
+};
 
-    }
-    </>
-  )
-}
+export default Meals;
 
-export default Meals
+// {
+//   auth?.role === "admin" && (
+//     <form onSubmit={addMeal}>
+//       {mealDetails.map((ele, index) => (
+//         <input {...ele} key={index} />
+//       ))}
+//       <button type="submit">Add Meal</button>
+//     </form>
+//   );
+// }

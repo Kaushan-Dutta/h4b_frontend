@@ -7,7 +7,7 @@ import { useAuth } from "./context/AuthContext";
 const App = () => {
   const { auth } = useAuth();
   return (
-    <div className="bg-background min-h-screen max-w-screen-2xl mx-auto px-[2rem] md:px-[5rem] py-[2rem] font-mons">
+    <div className="bg-background min-h-screen max-w-screen-2xl mx-auto font-mons">
       <Routes>
         {RouteLinks.filter((route) => {
           if (route.isCheck) {

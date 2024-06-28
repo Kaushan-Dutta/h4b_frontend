@@ -2,15 +2,16 @@ import React from "react";
 import Background from "../assets/Background.jpg";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Home = () => {
   const { auth } = useAuth();
 
   return (
-    <div className="">
+    <div className="md:px-[5rem] py-5 px-[2rem]">
       <nav className="flex_row justify-between">
         <div>
-          <h1>Logo</h1>
+          <Logo />
         </div>
         <div className="flex_row justify-center gap-5">
           {!auth && (
@@ -21,6 +22,10 @@ const Home = () => {
           )}
           {auth && auth?.role=='admin' && <Link to="/admin">Admin Dashboard</Link>}
           {auth && auth?.role=='user' &&<Link to="/user">User Journey</Link>}
+          {auth && <button onClick={()=>{
+            localStorage.removeItem('token')
+            window.location.reload()
+          }}>Logout</button>}
           
         </div>
       </nav>
