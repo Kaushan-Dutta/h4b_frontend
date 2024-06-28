@@ -7,7 +7,7 @@ const Login = () => {
   const { accountLogin, emailLogin } = login();
 
   return (
-    <div>
+    <div className="md:px-[5rem] py-5 px-[2rem]">
       <GoBack />
       <div className="flex_row justify-center h-[80vh]">
         <div className="flex flex-col gap-5 md:w-1/4">

@@ -1,8 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { serverProxy } from "../index";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const login = () => {
+  const navigate=useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,6 +37,7 @@ export const login = () => {
         const now = new Date();
         localStorage.setItem("tokenTimestamp", now.getTime());
         toast.success("Login Successful");
+        navigate("/");
       } catch (e) {
         // console.log(e)
         toast.error("Login Failed");

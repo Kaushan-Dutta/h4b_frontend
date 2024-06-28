@@ -3,6 +3,7 @@ import { serverProxy } from '../index';
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 
+
 export const signup = () => {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState();

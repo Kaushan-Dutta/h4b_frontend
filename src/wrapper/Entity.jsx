@@ -22,7 +22,7 @@ const Dashboard = () => {
   }, [pathname, checkJourney]);
 
   return (
-    <div>
+    <div className="flex_row gap-5 ">
       <SideBar />
       {pathname.includes("/user/journey")?(journeyExists?<Outlet />:<h1>Journey Doesnot Exist</h1>):<Outlet/>}
     </div>
