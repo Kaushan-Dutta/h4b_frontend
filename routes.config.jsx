@@ -63,17 +63,17 @@ export const RouteLinks = [
       {
         path: "",
         element: <Dashboard />,
-        title: "Dashboard",
+        // title: "Dashboard",
       },
       {
         path: "meals",
         element: <Meals />,
-        title: "Meals",
+        // title: "Meals",
       },
       {
         path: "pantries",
         element: <Pantries />,
-        title: "Pantries",
+        // title: "Pantries",
       },
       {
         path: "pantries/:pantryid",
