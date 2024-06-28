@@ -17,11 +17,12 @@ import UserNotification from "./src/pages/components/features/Notifications";
 import Pantries from "./src/pages/components/features/Pantries";
 import Hockers from "./src/pages/components/features/Hockers";
 
+import Home from "./src/pages/Home";
 
 export const RouteLinks = [
   {
     path: "/",
-    element: <h1>Home Page</h1>,
+    element: <Home/>,
     title: "Home",
   },
   {
