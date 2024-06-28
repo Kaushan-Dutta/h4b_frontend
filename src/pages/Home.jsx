@@ -7,7 +7,7 @@ const Home = () => {
   const { auth } = useAuth();
 
   return (
-    <div className="">
+    <div className="md:px-[5rem] py-5 px-[2rem]">
       <nav className="flex_row justify-between">
         <div>
           <h1>Logo</h1>
