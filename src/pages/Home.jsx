@@ -21,6 +21,10 @@ const Home = () => {
           )}
           {auth && auth?.role=='admin' && <Link to="/admin">Admin Dashboard</Link>}
           {auth && auth?.role=='user' &&<Link to="/user">User Journey</Link>}
+          {auth && <button onClick={()=>{
+            localStorage.removeItem('token')
+            window.location.reload()
+          }}>Logout</button>}
           
         </div>
       </nav>
