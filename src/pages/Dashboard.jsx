@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="p-5 w-2/3 mx-auto">
       <GoBack />
       <Card 
-        title="User Dashboard" 
+        title="" 
         bordered={false} 
         className="mt-12 w-full bg-gray-100 shadow-lg rounded-lg p-8"
       >
