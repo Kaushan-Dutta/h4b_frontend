@@ -92,11 +92,11 @@ export const placeorder = () => {
   const placeOrder = useCallback(
     async (e) => {
       e.preventDefault();
-      const isPaid = await payWithRazorpay();
-      if (!isPaid) {
-        toast.error("Payment not done");
-        return;
-      }
+      // const isPaid = await payWithRazorpay();
+      // if (!isPaid) {
+      //   toast.error("Payment not done");
+      //   return;
+      // }
       try {
         const res = await serverProxy().post("/placeorder", {
           pantryId: order.pantry._id,
