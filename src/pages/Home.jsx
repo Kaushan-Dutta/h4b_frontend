@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
+
 const Home = () => {
   const { auth } = useAuth();
 
@@ -30,11 +31,12 @@ const Home = () => {
         </div>
       </nav>
       <div className="flex_row h-[80vh]">
-        <div className="flex flex-col text-3xl gap-5">
-          <h1 className="text-5xl font-mons ">
-            <b>Indian Railways</b>
+        <div className="flex flex-col text-5xl gap-5">
+          <h1 className="text- font-mons ">
+            <b>Rail Bytes</b>
+            <p className="text-lg">-By Indian Railways</p>
           </h1>
-          <p>Connect to the all the asscessbility people</p>
+          
         </div>
       </div>
     </div>

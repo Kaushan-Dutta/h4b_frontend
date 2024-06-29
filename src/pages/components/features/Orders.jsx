@@ -1,6 +1,11 @@
-import React from 'react'
-import {viewjourney} from '../../../lib/api/users/viewjourney'
-import GoBack from '../GoBack';
+import React, { useState } from "react";
+import { viewjourney } from "../../../lib/api/users/viewjourney";
+import GoBack from "../GoBack";
+import { contribute } from "../../../lib/api/users/contribute";
+import { RxCross1 } from "react-icons/rx";
+import { useAuth } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { makeorder } from "../../../lib/api/users/makeorder";
 
 const Orders = () => {
   const {orders}=viewjourney();
@@ -37,7 +42,7 @@ const Orders = () => {
       
       
     </div>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;

@@ -7,6 +7,7 @@ import axios from "axios";
 export const placeorder = () => {
   const [email, setEmail] = useState("");
   const [mealId, setMealId] = useState("");
+
   const [quantity, setQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -97,12 +98,16 @@ export const placeorder = () => {
       //   toast.error("Payment not done");
       //   return;
       // }
+      // console.log("Meal history",mealId,order.meals.mealName)
+
       try {
         const res = await serverProxy().post("/placeorder", {
           pantryId: order.pantry._id,
           hockerId: order.hocker._id,
           email,
           mealId,
+          
+          mealName:order.meals.find((m) => m._id === mealId).mealName,
           quantity,
           totalPrice,
         });

@@ -20,7 +20,7 @@ export const viewjourney = () => {
     }catch(err){
       console.log(err);
     }
-  })
+  },[pathname])
     useEffect(() => {
         viewOrders();
     }, [viewOrders])
