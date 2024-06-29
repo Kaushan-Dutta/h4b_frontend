@@ -98,6 +98,8 @@ export const placeorder = () => {
       //   toast.error("Payment not done");
       //   return;
       // }
+      // console.log("Meal history",mealId,order.meals.mealName)
+
       try {
         const res = await serverProxy().post("/placeorder", {
           pantryId: order.pantry._id,
@@ -105,7 +107,7 @@ export const placeorder = () => {
           email,
           mealId,
           
-          mealName:order.meals.mealName,
+          mealName:order.meals.find((m) => m._id === mealId).mealName,
           quantity,
           totalPrice,
         });
