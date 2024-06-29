@@ -66,10 +66,15 @@ const Home = () => {
         <div className="flex_row h-[80vh]" style={nonBlurredSectionStyle}>
           <div className="flex flex-col text-3xl gap-5">
             <div>
-              <h1 className="text-5xl font-mons text-white">
-                <b>Indian Railways</b>
+              <p className="text-white mb-3">Verified | Hygienic | Simple</p>
+              <h1 className="text-8xl font-mons text-white mb-5">
+                <b >Rail Bhoj</b>
               </h1>
-              <p className="text-white">Connect to all the accessibility people</p>
+              <p className="text-white mt-10" style={{ letterSpacing: '4px' }}>
+                हर सफर में स्वस्थ और स्वादिष्ट भोजन !!
+              </p>
+
+
             </div>
           </div>
         </div>
