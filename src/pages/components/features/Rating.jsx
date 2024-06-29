@@ -1,23 +1,56 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import GoBack from '../GoBack';
 import { FaRegStar } from "react-icons/fa";
+import { useLocation } from 'react-router-dom';
+import { serverProxyWithAuth } from '../../../lib/api';
+// import { serverProxyWithAuth } from "../index";
+
+
+
+
+
 const RatingOption = () => {
   const [feedback, setFeedback] = useState("");
   const [star, setStar] = useState(0);
+  const location = useLocation();
+
+
+
+  const pathname = location.pathname;
+
+  const pantryId = pathname.split('/')[3];
 
   const handleStarClick = (rating) => {
     setStar(rating);
   };
 
+
+
   const rate = [1, 2, 3, 4, 5];
 
-  const submitReview = () => {
-    if (feedback === "")
-      return;
-    else
-      alert("Thank you for your feedback");
-  }
+  const submitReview = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+  
+        const res = await serverProxyWithAuth().post("/user/rating", {
+            pantryId,
+            rating: star,
+            review : feedback,
+        },
+      );
+        console.log(res);
+        toast.success("Rating and Review Added");
+      } catch (err) {
+        console.log(err);
+        toast.error("Rating and Review Not Added");
+      }
+    },
+    [pantryId,
+        star,
+        review]
+  );
 
   return (
     <div className="p-5 w-2/3">
