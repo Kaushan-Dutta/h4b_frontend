@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       fontFamily:{
         mons: ["Montserrat", "sans-serif"],
-        ubun: ["Ubuntu", "sans-serif"]
+        ubun: ["Ubuntu", "sans-serif"],
+        ops:["Black Ops One", "system-ui"]
+
       },
       colors: {
         imp: "#146C94",
