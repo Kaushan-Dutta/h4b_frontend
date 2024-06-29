@@ -1,11 +1,37 @@
-import React from 'react'
-import QRCode from 'qrcode.react';
+import React from 'react';
+import GoBack from './components/GoBack';
 
 const Dashboard = () => {
-  return (
-    <QRCode value="https://localhost:5173/admin/39043084" renderAs="canvas" />
-  )
-}
+  const user = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    bio: 'Software Developer at XYZ Company',
+    avatarUrl: 'https://via.placeholder.com/150' // 
+  };
 
-export default Dashboard
-//https://localhost:5173/makeorder?pantryId=19289&hockerId=84048
+  return (
+    <div className="p-5 w-2/3 mx-auto">
+      <GoBack />
+      <div
+        title="" 
+        bordered={false} 
+        className="mt-12 w-full bg-gray-100 shadow-lg rounded-lg p-8"
+      >
+        <div className="flex flex-col items-center">
+          <img
+            className="w-36 h-36 rounded-full shadow-md"
+            src={user.avatarUrl}
+            alt={user.name}
+          />
+          <div className="mt-5 text-center">
+            <h2 className="text-2xl font-semibold text-gray-800">{user.name}</h2>
+            <p className="text-lg text-gray-600">{user.email}</p>
+            <p className="text-md text-gray-500">{user.bio}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createjourney } from "../lib/api/users/createjourney";
 // import { redirect } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 {
   /* 
