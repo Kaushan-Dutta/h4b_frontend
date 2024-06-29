@@ -7,6 +7,7 @@ import axios from "axios";
 export const placeorder = () => {
   const [email, setEmail] = useState("");
   const [mealId, setMealId] = useState("");
+
   const [quantity, setQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -103,7 +104,8 @@ export const placeorder = () => {
           hockerId: order.hocker._id,
           email,
           mealId,
-          mealName:order.meal.mealName,
+          
+          mealName:order.meals.mealName,
           quantity,
           totalPrice,
         });
