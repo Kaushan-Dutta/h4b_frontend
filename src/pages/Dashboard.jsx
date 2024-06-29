@@ -1,14 +1,10 @@
 import React from 'react';
 import GoBack from './components/GoBack';
+import { useAuth } from '../context/AuthContext';
 
 const Dashboard = () => {
-  const user = {
-    name: 'Name: John Doe',
-    email: 'Email Id: admin@gmail.com',
-    bio: 'Member since 6th September, 2021',
-    avatarUrl: 'https://via.placeholder.com/150' 
-  };
-
+  
+  const {auth} = useAuth();
   return (
     <div className="p-5 w-3/4 ">
       <GoBack />
@@ -18,13 +14,13 @@ const Dashboard = () => {
         <div className="flex items-center">
           <img
             className="w-20 h-20 rounded-full shadow-md mr-8"
-            src={user.avatarUrl}
-            alt={user.name}
+            src=''
+            alt=''
           />
           
           <div className="text-left">
-            <p className="text-lg text-gray-600">{user.email}</p>
-            <p className="text-md text-gray-500">{user.bio}</p>
+            <p className="text-lg text-gray-600">{auth?.email}</p>
+            <p className="text-md text-gray-500">{auth?.role}</p>
           </div>
         </div>
       </div>
