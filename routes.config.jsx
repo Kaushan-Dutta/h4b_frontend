@@ -9,6 +9,7 @@ import Login from "./src/pages/components/auth/Login";
 import SignUp from "./src/pages/components/auth/SignUp";
 
 import Meals from "./src/pages/components/features/Meals";
+import Ratings from "./src/pages/components/features/Ratings.jsx";
 
 import UserRate from "./src/pages/components/features/Rating";
 import UserOrders from "./src/pages/components/features/Orders";
@@ -125,6 +126,11 @@ export const RouteLinks = [
         path: "meals",
         element: <Meals />,
         title: "Meals",
+      },
+      {
+        path: "ratings",
+        element: <Ratings />,
+        title: "Ratings",
       },
       {
         path: "notification",
