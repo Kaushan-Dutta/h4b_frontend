@@ -25,7 +25,7 @@ const Ratings = () => {
               </div>
               <div className="flex_row gap-5">
                 <button className="rounded-full px-3 py-1 text-white bg-primary text-sm">
-                  Rs&nbsp;{rating.review}
+                  {rating.review}
                 </button>
               </div>
             </div>
