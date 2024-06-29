@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { pantryRatings } from "../../../lib/api/admin/ratings";
-import { useAuth } from "../../../context/AuthContext";
+
 import GoBack from "../GoBack";
-import { RxCross1 } from "react-icons/rx";
+
 
 const Ratings = () => {
   const {  ratings } = pantryRatings();
-  const { auth } = useAuth();
-  const [state, setState] = useState(0);
+
 
 
   return (
