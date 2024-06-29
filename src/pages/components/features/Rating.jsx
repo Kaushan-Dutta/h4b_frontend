@@ -5,7 +5,7 @@ import { FaRegStar } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
 import { serverProxyWithAuth } from '../../../lib/api';
 // import { serverProxyWithAuth } from "../index";
-
+import toast from "react-hot-toast";
 
 
 
@@ -21,6 +21,7 @@ const RatingOption = () => {
 
   const pantryId = pathname.split('/')[3];
 
+
   const handleStarClick = (rating) => {
     setStar(rating);
   };
@@ -33,23 +34,26 @@ const RatingOption = () => {
     async (e) => {
       e.preventDefault();
       try {
-  
         const res = await serverProxyWithAuth().post("/user/rating", {
-            pantryId,
-            rating: star,
-            review : feedback,
+          pantryId,
+          rating: star,
+          review: feedback,
         },
-      );
+        );
         console.log(res);
         toast.success("Rating and Review Added");
+        setStar(0);
+        setFeedback("");
+
       } catch (err) {
         console.log(err);
         toast.error("Rating and Review Not Added");
       }
     },
     [pantryId,
-        star,
-        review]
+      star,
+      feedback
+    ]
   );
 
   return (
@@ -57,9 +61,9 @@ const RatingOption = () => {
       <GoBack />
       <div className=''>
         <div className=''>
-          
+
           <h1 className="text-3xl font-bold text-gray-800 mt-6">User Details</h1>
-          
+
           <div className='flex flex-col gap-3 text-black p-5'>
 
             <div className='flex flex-row items-center space-x-5'>
