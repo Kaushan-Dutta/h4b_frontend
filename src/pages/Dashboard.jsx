@@ -1,32 +1,28 @@
 import React from 'react';
 import GoBack from './components/GoBack';
+import { useAuth } from '../context/AuthContext';
 
 const Dashboard = () => {
-  const user = {
-    name: 'Name: John Doe',
-    email: 'Email Id: admin@gmail.com',
-    bio: 'Member since 6th September, 2021',
-    avatarUrl: 'https://via.placeholder.com/150' 
-  };
-
+  
+  const {auth} = useAuth();
   return (
-    <div className="p-5 w-10/12 mx-auto">
+    <div className="p-5 w-3/4">
       <GoBack />
       
-      <div className="mt-12 w-full bg-gray-100 shadow-lg rounded-lg p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">User Details</h1>
+      <div className="mt-12 w-full bg-gray-100 rounded-lg border-2  p-5">
         
         <div className="flex items-center">
           <img
-            className="w-36 h-36 rounded-full shadow-md mr-8"
-            src={user.avatarUrl}
-            alt={user.name}
+            className="w-20 h-20 rounded-full shadow-md mr-8"
+            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+            alt=''
+            
           />
           
           <div className="text-left">
-            <h2 className="text-2xl font-semibold text-gray-800">{user.name}</h2>
-            <p className="text-lg text-gray-600">{user.email}</p>
-            <p className="text-md text-gray-500">{user.bio}</p>
+            
+            <p className="text-lg text-gray-600">{auth?.email}</p>
+            <p className="text-md text-gray-500">{auth?.role}</p>
           </div>
         </div>
       </div>
