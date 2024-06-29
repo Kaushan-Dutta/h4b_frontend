@@ -103,6 +103,7 @@ export const placeorder = () => {
           hockerId: order.hocker._id,
           email,
           mealId,
+          mealName:order.meal.mealName,
           quantity,
           totalPrice,
         });

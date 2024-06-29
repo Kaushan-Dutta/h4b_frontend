@@ -19,6 +19,8 @@ import Hockers from "./src/pages/components/features/Hockers";
 
 import Home from "./src/pages/Home";
 
+import Contribute from "./src/pages/components/features/Contribute";
+import AdminOrders from "./src/pages/components/features/AdminOrders";
 export const RouteLinks = [
   {
     path: "/",
@@ -75,6 +77,16 @@ export const RouteLinks = [
         path: "pantries",
         element: <Pantries />,
         title: "Pantries",
+      },
+      {
+        path: "refund",
+        element: <Contribute />,
+        title: "Refund",
+      },
+      {
+        path: "orders",
+        element: <AdminOrders />,
+        title: "Orders",
       },
       {
         path: "pantries/:pantryid",
