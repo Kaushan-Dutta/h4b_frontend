@@ -1,5 +1,7 @@
 # Rail Bhoj
 
+![Screenshot 2024-06-30 070306](https://github.com/Kaushan-Dutta/h4b_frontend/assets/94303484/a25d76dd-a60d-46db-b3b1-dce91a46d9ad)
+
 
 Rail Bhoj is a pantry Food and vendor Management System is designed to streamline and optimize the entire food supply chain for IRCTC. This comprehensive system offers robust solutions for managing pantry stocks, ensuring efficient inventory control, and facilitating seamless interactions with vendors.
 
@@ -57,6 +59,6 @@ npm i
  - MongoDB
  - Streamlit Data visualization and prediction
  - Node.js
- - Taiwind
- - Express
+ - Tailwind
+ - ExpressJs
 
