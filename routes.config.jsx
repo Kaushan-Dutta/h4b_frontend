@@ -132,11 +132,7 @@ export const RouteLinks = [
         element: <Ratings />,
         title: "Ratings",
       },
-      {
-        path: "notification",
-        element: <UserNotification />,
-        title: "Notification",
-      },
+     
     ],
   },
 ];
