@@ -5,6 +5,7 @@ import GoBack from "../GoBack";
 import { RxCross1 } from "react-icons/rx";
 import { useAuth } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Pantries = () => {
   const { pantryDetails, addPantry, pantries } = pantry();
@@ -60,7 +61,7 @@ const Pantries = () => {
         </div>
 
         {pantries?.map((pantry, index) => (
-          <div className="flex flex-col gap-5 bg-white rounded-lg p-3 cursor-pointer" onClick={()=>{
+          <div className="flex flex-col gap-5 bg-white rounded-lg px-5 py-3 cursor-pointer" onClick={()=>{
             navigate(`${pantry?._id}`)
           }} >
             <div className="flex_row justify-between gap-5 ">
@@ -70,6 +71,7 @@ const Pantries = () => {
                 </h1>
                 <h1>{pantry?._id}</h1>
               </div>
+              <button><IoIosArrowForward className="text-2xl"/></button>
             </div>
           </div>
         ))}
