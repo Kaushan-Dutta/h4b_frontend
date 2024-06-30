@@ -59,6 +59,6 @@ npm i
  - MongoDB
  - Streamlit Data visualization and prediction
  - Node.js
- - Taiwind
- - Express
+ - Tailwind
+ - ExpressJs
 
