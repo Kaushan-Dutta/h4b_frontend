@@ -1,6 +1,7 @@
 import React from 'react';
 import GoBack from './components/GoBack';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   
@@ -25,6 +26,9 @@ const Dashboard = () => {
             <p className="text-md text-gray-500">{auth?.role}</p>
           </div>
         </div>
+      </div>
+      <div className='flex_row justify-center'>
+      <Link to="https://train-sell-analytics.streamlit.app/" className="underline text-imp my-5 text-sm">Go to Food Sale Analysis</Link>
       </div>
     </div>
   );
