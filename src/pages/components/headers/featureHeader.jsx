@@ -5,6 +5,7 @@ import ViewSeat from "../popup/ViewSeat";
 import AddPantry from "../popup/AddPantry";
 import AddMeal from "../popup/AddMeal";
 import AddHocker from "../popup/AddHocker";
+import AddOrder from "../popup/AddOrder";
 
 const FeatureHeader = ({ heading, subheading, element }) => {
   const [state, setState] = useState(0);
@@ -20,6 +21,8 @@ const FeatureHeader = ({ heading, subheading, element }) => {
         return auth?.role == "admin" && <AddMeal setState={setState} />;
       case "Add Hocker":
         return auth?.role == "admin" && <AddHocker setState={setState} />;
+      case "Add Order":
+        return auth?.role==="user" && <AddOrder setState={setState} />;
       default:
         return null;
     }
