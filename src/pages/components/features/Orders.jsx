@@ -102,7 +102,10 @@ const Orders = () => {
       <GoBack />
       <div className="flex flex-col gap-5 my-8 ">
         <div className="flex_row justify-between">
-          <h1 className="text-4xl font-bold">Your Orders</h1>
+          <div className="">
+          <h1 className="text-4xl ">Orders</h1>
+          <p className="font-ubun">Your Orders</p>
+          </div>
           {auth && auth?.role === "user" && (
             <button
               className="rounded-full px-3 py-1 text-white bg-imp text-sm"

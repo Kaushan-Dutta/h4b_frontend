@@ -7,7 +7,7 @@ const Dashboard = () => {
   
   const {auth} = useAuth();
   return (
-    <div className="p-5 w-3/4">
+    <div className=" w-3/4">
       <GoBack />
       
       <div className="mt-12 w-full bg-gray-100 rounded-lg border-2  p-5">
