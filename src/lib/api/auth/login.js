@@ -37,7 +37,7 @@ export const login = () => {
         const now = new Date();
         localStorage.setItem("tokenTimestamp", now.getTime());
         toast.success("Login Successful");
-        navigate("/");
+        window.location.href="/";
       } catch (e) {
         // console.log(e)
         toast.error("Login Failed");

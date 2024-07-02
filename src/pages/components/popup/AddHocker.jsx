@@ -1,7 +1,7 @@
 import { RxCross1 } from "react-icons/rx";
 import { pantryHockers } from "../../../lib/api/admin/hockers";
 const AddHocker = ({ setState }) => {
-  const { hockerDetails, addHocker } = pantryHockers();
+  const { hockerDetails,  handleAddHocker } = pantryHockers();
 
   return (
     <div className="w-screen h-screen px-5 md:px-0  bg-primary bg-opacity-10 fixed  justify-center items-center flex flex-row top-0 left-0 ">
@@ -16,7 +16,7 @@ const AddHocker = ({ setState }) => {
             <RxCross1 />
           </button>
         </div>
-        <form onSubmit={addHocker} className="flex flex-col gap-5 ">
+        <form onSubmit={ handleAddHocker} className="flex flex-col gap-5 ">
           {hockerDetails.map((ele, index) => (
             <input {...ele} key={index} className="w-full" />
           ))}

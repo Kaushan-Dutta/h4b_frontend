@@ -1,7 +1,8 @@
 import { RxCross1 } from "react-icons/rx";
 import { pantrymeals } from "../../../lib/api/admin/meals";
+
 const AddMeal = ({setState}) => {
-  const { mealDetails, addMeal } = pantrymeals();
+  const { mealDetails,  handleAddMeal } = pantrymeals();
 
   return (
     <div className="w-screen h-screen px-5 md:px-0  bg-primary bg-opacity-10 fixed z-30 justify-center items-center flex flex-row top-0 left-0 ">
@@ -16,7 +17,7 @@ const AddMeal = ({setState}) => {
             <RxCross1 />
           </button>
         </div>
-        <form onSubmit={addMeal} className="flex flex-col gap-5 ">
+        <form onSubmit={handleAddMeal} className="flex flex-col gap-5 ">
           {mealDetails.map((ele, index) => (
             <input {...ele} key={index} className="w-full" />
           ))}

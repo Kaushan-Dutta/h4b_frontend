@@ -1,17 +1,18 @@
-import React, { useCallback, useState,useEffect } from "react";
-import toast from "react-hot-toast";
+import React, { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { serverProxyWithAuth } from "../index";
 import { useAuth } from "../../../context/AuthContext";
+import toast from "react-hot-toast";
 
 export const pantrymeals = () => {
-  const [mealName, setMealName] = useState();
-  const [mealType, setMealType] = useState();
-  const [mealPrice, setMealPrice] = useState();
+  const [mealName, setMealName] = useState('');
+  const [mealType, setMealType] = useState('');
+  const [mealPrice, setMealPrice] = useState('');
+  // const [meals, setMeals] = useState([]);
 
-  const [meals, getMeals] = useState([]);
+  const { auth } = useAuth();
+  const queryClient = useQueryClient();
 
-  const {auth} = useAuth();
-  
   const mealDetails = [
     {
       placeholder: "Enter Meal Name",
@@ -32,38 +33,57 @@ export const pantrymeals = () => {
       onChange: (e) => setMealPrice(e.target.value),
     },
   ];
-  const addMeal = useCallback(
-    async (e) => {
-      e.preventDefault();
-      try {
 
-        const res = await serverProxyWithAuth().post("/admin/meal", {
-          mealName,
-          mealType,
-          mealPrice,
-        });
-        console.log(res);
-        toast.success("Meal Added");
-      } catch (err) {
-        console.log(err);
-        toast.error("Meal not added");
-      }
-    },
-    [mealName, mealType, mealPrice]
-  );
-  const fetchMeals = useCallback(async () => {
+  const fetchMeals = async () => {
     try {
-      const res = await serverProxyWithAuth().get(auth?.role=="admin"?"/admin/meal":"/user/meal");
-      console.log("Meals are fetched",res.data.data);
-      getMeals(res.data.data);
+      const res = await serverProxyWithAuth().get(auth?.role === "admin" ? "/admin/meal" : "/user/meal");
+      console.log("Meals are fetched", res.data.data);
+      // setMeals(res.data.data);
+      return res.data.data;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      toast.error("Error fetching meals");
     }
-  },[]);
+  };
 
-  useEffect(() => {
-    fetchMeals();
-  }, [fetchMeals]);
+  const addMeal = async () => {
+    try {
+      const res = await serverProxyWithAuth().post("/admin/meal", {
+        mealName,
+        mealType,
+        mealPrice,
+      });
+      console.log("Meal Added");
+      toast.success("Meal added successfully");
+      return res.data.data;
+    } catch (err) {
+      console.error(err);
+      toast.error("Error adding meal");
+    }
+  };
 
-  return { mealDetails, addMeal, fetchMeals, meals };
+  const { data: meals } = useQuery({
+    queryKey: ["meals"],
+    queryFn: fetchMeals,
+    enabled: !!auth,
+  });
+
+  const mutation = useMutation({
+    mutationFn: addMeal,
+    onSuccess: () => {
+      return queryClient.invalidateQueries({ queryKey: ['meals'] });
+      
+    },
+  });
+
+  const handleAddMeal = (e) => {
+    e.preventDefault();
+    if (mealName && mealType && mealPrice) {
+      mutation.mutate();
+    } else {
+      toast.error("Please fill in all meal details");
+    }
+  };
+
+  return { mealDetails, handleAddMeal, meals };
 };
